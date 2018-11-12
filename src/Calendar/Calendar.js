@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
+import events from '../Data/events'
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -12,7 +13,7 @@ const Calendar = props => (
       localizer={localizer}
       startAccessor="start"
       endAccessor="end"
-      events={[]}
+      events={events}
     />
   </div>
 )
