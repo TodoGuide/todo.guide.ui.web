@@ -9,7 +9,7 @@ Todo Guide helps manage expectations so you can focus on what's really important
 
 When tasks take longer or shorter than expected, Todo Guide will shift your entire schedule accordingly!
 
- ![image](./docs/auto-schedule.gif)
+ ![automatic scheduling](./docs/auto-schedule.gif)
 
 ## Developer Quick Start
 

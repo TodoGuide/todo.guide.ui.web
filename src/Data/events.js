@@ -3,18 +3,13 @@ import moment from "moment";
 const events = [
   {
     priority: 1,
-    duration: 60,
-    title: "First Priority"
-  },
-  {
-    priority: 5,
-    duration: 90,
-    title: "Fifth Priority"
-  },
-  {
-    priority: 3,
     duration: 120,
-    title: "Third Priority"
+    title: "Ability to add a todo item"
+  },
+  {
+    priority: 10,
+    duration: 240,
+    title: "Ability to mark an item as complete"
   },
 ];
 
