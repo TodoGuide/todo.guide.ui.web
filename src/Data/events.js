@@ -42,5 +42,4 @@ events.schedule = function(){
   return this;
 }
 
-
 export default events;
