@@ -18,24 +18,28 @@ class App extends Component {
   };
 
   onEventResize = ({ event, start, end}) => {
-    this.setState(state => {
-      console.log(event);
-      event.duration = moment.duration(moment(end).diff(moment(start))).asMinutes();
-      event.priority = start;
-      event.start = start;
-      event.end = end;
-      return { events: state.events.schedule() };
-    });
+    event.duration = moment.duration(moment(end).diff(moment(start))).asMinutes();
+    event.priority = start;
+    event.start = start;
+    event.end = end;
+    this.setState({ events: this.state.events.schedule() });
   };
 
   onEventDrop = ({ event, start, end, allDay }) => {
-    console.log(start);
-    this.setState(state => {
-      event.priority = start;
-      event.start = start;
-      event.end = end;
-      return { events: state.events.schedule() };
+    event.priority = start;
+    event.start = start;
+    event.end = end;
+    this.setState({ events: this.state.events.schedule() });
+  };
+
+  onSelectSlot = ({ start, end }) => {
+    const title = window.prompt("What's your todo item?")
+    this.state.events.push({
+      priority: start,
+      duration: moment.duration(moment(end).diff(moment(start))).asMinutes(),
+      title
     });
+    this.setState({events: this.state.events.schedule()});
   };
 
   render() {
@@ -54,7 +58,11 @@ class App extends Component {
           events={this.state.events}
           onEventDrop={this.onEventDrop}
           onEventResize={this.onEventResize}
+          onSelectEvent={event => alert(event.title)}
+          onSelectSlot={this.onSelectSlot}
           localizer={localizer}
+          step={15}
+          selectable
           resizable
           style={{ height: "100vh" }}
         />

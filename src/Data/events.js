@@ -2,14 +2,19 @@ import moment from "moment";
 
 const events = [
   {
-    priority: 1,
+    priority: 10,
     duration: 120,
-    title: "Ability to add a todo item"
+    title: "Ability to mark an item as complete"
   },
   {
-    priority: 10,
-    duration: 240,
-    title: "Ability to mark an item as complete"
+    priority: 15,
+    duration: 180,
+    title: "Persist data offline"
+  },
+  {
+    priority: 20,
+    duration: 90,
+    title: "Host on GitHub static sites"
   },
 ];
 
