@@ -12,7 +12,6 @@ export default class Todo {
   }
 
   set end(end){
-    console.log("End", end);
     this.duration = moment.duration(moment(this.end).diff(this.start)).asMinutes();
   }
 }
