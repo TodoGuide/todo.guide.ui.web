@@ -1,6 +1,15 @@
-# Todo Guied
+# Todo Guide
 
 The todo list that guides you through your day!
+
+Todo Guide helps manage expectations so you can focus on what's really important. Here's how it works:
+
+* Add and prioritize your todo items
+* Todo Guide shows those items in a calendar view so youknow realistically when they'll be done
+
+When tasks take longer or shorter than expected, Todo Guide will shift your entire schedule accordingly!
+
+ ![image](./docs/auto-schedule.gif)
 
 ## Developer Quick Start
 
