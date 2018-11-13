@@ -25,9 +25,9 @@ const modalStyles = {
 
 class Schedule extends Component {
 
-  constructor(props){
-    super(props);
-    this.state = { schedule: this.props.schedule, currentTodo: null }
+  constructor({ schedule }){
+    super({ schedule });
+    this.state = { schedule: schedule, currentTodo: null }
   }
 
   calendarOnEventResize = ({ event, start, end}) => {
@@ -36,7 +36,7 @@ class Schedule extends Component {
     this.setState({ state: this.state.schedule.update() });
   };
 
-  calendarOnEventDrop = ({ event, start, end }) => {
+  calendarOnEventDrop = ({ event, start }) => {
     event.start = start;
     this.setState({ state: this.state.schedule.update() });
   };
@@ -44,6 +44,7 @@ class Schedule extends Component {
   calendarOnSelectSlot = ({ start, end }) => {
     if(this.state.currentTodo) return;
     const title = window.prompt("What's your todo item?")
+    if(! title) return;
     this.state.schedule.push(new TodoModel({
       start: start,
       duration: moment.duration(moment(end).diff(moment(start))).asMinutes(),
@@ -62,7 +63,6 @@ class Schedule extends Component {
   }
 
   render(){
-    console.log("Rendering Schedule", this.state.schedule);
     return (
       <div>
         <Modal
@@ -72,7 +72,7 @@ class Schedule extends Component {
           style={modalStyles}
         >
           <Todo todo={this.state.currentTodo} />
-          <button onClick={this.todoOnRequestClose.bind(this)}>close</button>
+          <button onClick={this.todoOnRequestClose.bind(this)}>Close</button>
         </Modal>
         <Calendar
           defaultDate={new Date()}

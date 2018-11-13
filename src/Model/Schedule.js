@@ -8,7 +8,6 @@ export default class Schedule extends Array {
   }
 
   push(todos){
-    console.log("Pushing schedule todo", todos)
     const result = super.push(todos);
     this.update();
     return result;
@@ -25,8 +24,7 @@ export default class Schedule extends Array {
         current.start = tomorrow;
       }
       if (i < lastIndex) {
-        const next = this[i + 1];
-        next.start = current.end;
+        this[i + 1].start = current.end;
       }
     }
     return this;
