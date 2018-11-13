@@ -3,7 +3,7 @@ import BigCalendar from "react-big-calendar";
 import moment from "moment";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import Todo from "../Todo/Todo"
-import TodoItem from "../Todo/TodoItem"
+import TodoModel from "../Model/Todo"
 import Modal from 'react-modal';
 
 // Setup
@@ -13,13 +13,13 @@ Modal.setAppElement('#root');
 
 const modalStyles = {
   content : {
-    top                   : '25%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)',
-    zIndex                : '1000 !important'
+    top         : '25%',
+    left        : '50%',
+    right       : 'auto',
+    bottom      : 'auto',
+    marginRight : '-50%',
+    transform   : 'translate(-50%, -50%)',
+    zIndex      : '1000 !important'
   }
 };
 
@@ -27,31 +27,29 @@ class Schedule extends Component {
 
   constructor(props){
     super(props);
-    this.state = { todos: props.todos, currentTodo: null }
+    this.state = { schedule: this.props.schedule, currentTodo: null }
   }
 
   calendarOnEventResize = ({ event, start, end}) => {
     event.duration = moment.duration(moment(end).diff(moment(start))).asMinutes();
     event.start = start;
-    event.end = end;
-    this.setState({ todos: this.state.todos.schedule() });
+    this.setState({ state: this.state.schedule.update() });
   };
 
-  calendarOnEventDrop = ({ event, start, end, allDay }) => {
+  calendarOnEventDrop = ({ event, start, end }) => {
     event.start = start;
-    event.end = end;
-    this.setState({ todos: this.state.todos.schedule() });
+    this.setState({ state: this.state.schedule.update() });
   };
 
   calendarOnSelectSlot = ({ start, end }) => {
     if(this.state.currentTodo) return;
     const title = window.prompt("What's your todo item?")
-    this.state.todos.push(new Todo({
+    this.state.schedule.push(new TodoModel({
       start: start,
       duration: moment.duration(moment(end).diff(moment(start))).asMinutes(),
       title: title
     }));
-    this.setState({todos: this.state.todos.schedule()});
+    this.setState({ state: this.state.schedule.update() });
   };
 
   calendarOnSelectEvent = (event) => {
@@ -60,11 +58,11 @@ class Schedule extends Component {
 
   todoOnRequestClose() {
     // todo: Save currentTodo changes
-    this.setState({currentTodo: null});
+    this.setState({ currentTodo: null });
   }
 
   render(){
-    console.log("Rendering Schedule", this.state.todos);
+    console.log("Rendering Schedule", this.state.schedule);
     return (
       <div>
         <Modal
@@ -73,13 +71,13 @@ class Schedule extends Component {
           contentLabel="Example Modal"
           style={modalStyles}
         >
-          <TodoItem todo={this.state.currentTodo} />
+          <Todo todo={this.state.currentTodo} />
           <button onClick={this.todoOnRequestClose.bind(this)}>close</button>
         </Modal>
         <Calendar
           defaultDate={new Date()}
           defaultView="day"
-          events={this.state.todos}
+          events={this.props.schedule}
           onEventDrop={this.calendarOnEventDrop}
           onEventResize={this.calendarOnEventResize}
           onSelectEvent={this.calendarOnSelectEvent}

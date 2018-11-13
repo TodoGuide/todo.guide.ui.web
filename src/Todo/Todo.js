@@ -1,17 +1,16 @@
-import moment from "moment";
+import React, { Component } from "react";
 
-export default class Todo {
-  constructor({title, duration, start}){
-    this.title = title || "New task";
-    this.duration = duration || 60;
-    this.start = start || Date.now();
-  }
-  
-  get end(){
-    return moment(this.start).add(this.duration, "minutes").toDate()
-  }
-
-  set end(end){
-    this.duration = moment.duration(moment(this.end).diff(this.start)).asMinutes();
+class Todo extends Component {
+  render(){
+    if(!this.props.todo){
+      return null;
+    }
+    return (
+      <div>
+        <p>Title: {this.props.todo.title}</p>
+        <p>Duration: About {this.props.todo.duration} minutes</p>
+      </div>)
   }
 }
+
+export default Todo;

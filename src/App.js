@@ -4,12 +4,13 @@ import "./App.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import logo from "./logo.svg";
-import events from "./Data/events"
+import todos from "./Data/schedule"
 import Schedule from "./Schedule/Schedule"
+import ScheduleModel from "./Model/Schedule"
 
 class App extends Component {
   state = {
-    todos: events.schedule()
+    schedule: new ScheduleModel(...todos)
   };
 
   render() {
@@ -19,7 +20,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" style={{ display: 'none'}} />
           <h1 className="App-title">Todo Guide!</h1>
         </header>
-        <Schedule todos={this.state.todos}></Schedule>
+        <Schedule schedule={this.state.schedule}></Schedule>
       </div>
     );
   }
