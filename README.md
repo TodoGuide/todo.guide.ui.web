@@ -32,6 +32,18 @@ npm test
 
 Launches the test runner in the interactive watch mode. See the React docs for [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### Debugging
+
+This project has been setup to use the [VS Code Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome). For more information on using VS Code with React, check out [the tutorial](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial).
+
+To debug:
+
+Set a break-point then run `npm start` to get the app running. To attach the debugger, press `F5` or click `▶️` in VS Code. Once the debugger is attached, you may need to refresh the page to hit your breakpoint.
+
+### Linting
+
+We use the AirBNB rules for ESLint.
+
 ### Build for Production
 
 ```bash

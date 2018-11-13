@@ -1,20 +1,19 @@
-import moment from "moment";
+import moment from 'moment';
 
 export default class Schedule extends Array {
-
-  constructor(...todos){
+  constructor(...todos) {
     super(...todos);
     this.update();
   }
 
-  push(todos){
+  push(todos) {
     const result = super.push(todos);
     this.update();
     return result;
   }
 
-  update(){
-    const tomorrow = moment().add(1, "day").startOf('day').toDate();
+  update() {
+    const tomorrow = moment().add(1, 'day').startOf('day').toDate();
     const lastIndex = this.length - 1;
     this.sort((a, b) => a.start - b.start);
     this[0].start = new Date();
