@@ -9,13 +9,13 @@ function Todo({ todo }) {
   return (
     <div>
       <p>
-        Title:
+        Title:&nbsp;
         {todo.title}
       </p>
       <p>
-        Duration: About
-        {todo.duration}
-        minutes
+        Estimate: About&nbsp;
+        {todo.estimate}
+        &nbsp;minutes
       </p>
     </div>);
 }

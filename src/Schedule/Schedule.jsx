@@ -61,7 +61,7 @@ class Schedule extends Component {
     if (!title) return;
     schedule.push(new TodoModel({
       start,
-      duration: moment.duration(moment(end).diff(moment(start))).asMinutes(),
+      estimate: moment.duration(moment(end).diff(moment(start))).asMinutes(),
       title,
     }));
     this.setState({ schedule: schedule.update() });

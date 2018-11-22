@@ -1,17 +1,20 @@
 import moment from 'moment';
 
 export default class Todo {
-  constructor({ title, duration, start }) {
+  constructor({
+    title, estimate, start, done,
+  }) {
     this.title = title || 'New task';
-    this.duration = duration || 60;
+    this.estimate = estimate || 60;
     this.start = start || Date.now();
+    this.done = done;
   }
 
   get end() {
-    return moment(this.start).add(this.duration, 'minutes').toDate();
+    return moment(this.start).add(this.estimate, 'minutes').toDate();
   }
 
   set end(end) {
-    this.duration = moment.duration(moment(this.end).diff(this.start)).asMinutes();
+    this.estimate = moment.duration(moment(this.end).diff(this.start)).asMinutes();
   }
 }
