@@ -12,7 +12,12 @@ export default class Schedule extends Array {
     return result;
   }
 
+  notDone() {
+    return new Schedule(...this.filter(todo => !todo.done));
+  }
+
   update() {
+    if (this.length === 0) return this;
     const tomorrow = moment().add(1, 'day').startOf('day').toDate();
     const lastIndex = this.length - 1;
     this.sort((a, b) => a.start - b.start);
