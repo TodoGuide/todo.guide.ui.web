@@ -5,6 +5,7 @@ const todos = [
     title: 'Ability to mark an item as complete',
     start: 10,
     estimate: 120,
+    done: true,
   }),
   new Todo({
     title: 'Persist data offline',
@@ -15,6 +16,11 @@ const todos = [
     title: 'Host on GitHub static sites',
     start: 20,
     estimate: 90,
+  }),
+  new Todo({
+    title: 'Ability to view completed todos',
+    start: 30,
+    estimate: 240,
   }),
 ];
 
