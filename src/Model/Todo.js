@@ -7,7 +7,7 @@ export default class Todo {
     this.title = title || 'New task';
     this.estimate = estimate || 60;
     this.start = start || Date.now();
-    this.done = done;
+    this.done = done || false;
   }
 
   get end() {
