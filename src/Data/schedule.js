@@ -5,7 +5,7 @@ const todos = [
     title: 'Ability to mark an item as complete',
     start: 10,
     estimate: 120,
-    done: true,
+    done: false,
   }),
   new Todo({
     title: 'Persist data offline',

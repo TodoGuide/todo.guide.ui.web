@@ -73,12 +73,14 @@ class Schedule extends Component {
 
   todoOnRequestClose() {
     // todo: Save currentTodo changes
-    this.setState({ currentTodo: null });
+    const { schedule } = this.state;
+    this.setState({ currentTodo: null, schedule: schedule.notDone() });
   }
 
   render() {
-    const { currentTodo } = this.state;
-    const { schedule, increment } = this.props;
+    const { schedule, currentTodo } = this.state;
+    const { increment } = this.props;
+    console.log('Schedule.jsx render', schedule);
     return (
       <div>
         <Modal
