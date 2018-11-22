@@ -21,7 +21,11 @@ function Todo({ todo }) {
 }
 
 Todo.propTypes = {
-  todo: PropTypes.instanceOf(TodoModel).isRequired,
+  todo: PropTypes.instanceOf(TodoModel),
+};
+
+Todo.defaultProps = {
+  todo: null,
 };
 
 export default Todo;
