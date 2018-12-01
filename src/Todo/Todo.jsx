@@ -3,9 +3,17 @@ import PropTypes from 'prop-types';
 import TodoModel from '../Model/Todo';
 
 class Todo extends Component {
-  constructor({ todo }) {
-    super({ todo });
-    this.state = { todo };
+  static defaultProps = {
+    todo: null,
+  };
+
+  static propTypes = {
+    todo: PropTypes.instanceOf(TodoModel),
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = { todo: props.todo };
   }
 
   doneChange({ target }) {
@@ -32,23 +40,20 @@ class Todo extends Component {
           &nbsp;minutes
         </p>
         <p>
-          <input
-            name="done"
-            type="checkbox"
-            checked={todo.done}
-            onChange={this.doneChange.bind(this)}
-          />
+          <label htmlFor="done">
+            <input
+              name="done"
+              id="done"
+              type="checkbox"
+              checked={todo.done}
+              onChange={this.doneChange.bind(this)}
+            />
+            &nbsp;
+            Done
+          </label>
         </p>
       </div>);
   }
 }
-
-Todo.propTypes = {
-  todo: PropTypes.instanceOf(TodoModel),
-};
-
-Todo.defaultProps = {
-  todo: null,
-};
 
 export default Todo;

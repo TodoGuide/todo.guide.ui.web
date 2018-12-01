@@ -11,7 +11,6 @@ import ScheduleModel from '../Model/Schedule';
 // Setup
 const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 const Calendar = withDragAndDrop(BigCalendar);
-Modal.setAppElement('#root');
 
 const modalStyles = {
   content: {
@@ -30,15 +29,17 @@ class Schedule extends Component {
   static propTypes = {
     increment: PropTypes.number,
     schedule: PropTypes.instanceOf(ScheduleModel).isRequired,
+    currentTodo: PropTypes.instanceOf(TodoModel)
   }
 
   static defaultProps = {
     increment: 15,
+    currentTodo: null
   };
 
-  constructor({ schedule }) {
-    super({ schedule });
-    this.state = { schedule, currentTodo: null };
+  constructor(props) {
+    super(props);
+    this.state = { schedule: props.schedule, currentTodo: props.currentTodo };
   }
 
   calendarOnEventResize = ({ event, start, end }) => {

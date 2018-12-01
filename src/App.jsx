@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Modal from 'react-modal';
 
 import './App.css';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
@@ -7,6 +8,8 @@ import logo from './logo.svg';
 import todos from './Data/schedule';
 import Schedule from './Schedule/Schedule';
 import ScheduleModel from './Model/Schedule';
+
+Modal.setAppElement('#root'); // Modals!
 
 class App extends Component {
   state = {
