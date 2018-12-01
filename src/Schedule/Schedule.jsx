@@ -82,6 +82,7 @@ class Schedule extends Component {
     const { schedule, currentTodo } = this.state;
     const { increment } = this.props;
     console.log('Schedule.jsx render', schedule);
+    localStorage.setItem('todos', JSON.stringify(schedule)); // TODO: Use events!
     return (
       <div>
         <Modal
