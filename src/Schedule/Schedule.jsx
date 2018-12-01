@@ -29,12 +29,12 @@ class Schedule extends Component {
   static propTypes = {
     increment: PropTypes.number,
     schedule: PropTypes.instanceOf(ScheduleModel).isRequired,
-    currentTodo: PropTypes.instanceOf(TodoModel)
+    currentTodo: PropTypes.instanceOf(TodoModel),
   }
 
   static defaultProps = {
     increment: 15,
-    currentTodo: null
+    currentTodo: null,
   };
 
   constructor(props) {
@@ -96,7 +96,7 @@ class Schedule extends Component {
         <Calendar
           defaultDate={new Date()}
           defaultView="day"
-          events={schedule}
+          events={schedule.notDone()}
           onEventDrop={this.calendarOnEventDrop}
           onEventResize={this.calendarOnEventResize}
           onSelectEvent={this.calendarOnSelectEvent}

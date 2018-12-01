@@ -5,7 +5,7 @@ const todos = [
     title: 'Ability to mark an item as complete',
     start: 10,
     estimate: 120,
-    done: false,
+    done: true,
   }),
   new Todo({
     title: 'Persist data offline',
@@ -20,6 +20,11 @@ const todos = [
   new Todo({
     title: 'Ability to view completed todos',
     start: 30,
+    estimate: 240,
+  }),
+  new Todo({
+    title: 'Ability to quickly add highest and lowest priority todos',
+    start: 40,
     estimate: 240,
   }),
 ];

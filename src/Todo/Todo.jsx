@@ -17,7 +17,7 @@ class Todo extends Component {
   }
 
   doneChange({ target }) {
-    console.debug("doneChange called", target);
+    console.debug('doneChange called', target);
     const { todo } = this.state;
     todo.done = target.checked;
     this.setState({ todo });
