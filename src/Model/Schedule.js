@@ -13,24 +13,35 @@ export default class Schedule extends Array {
   }
 
   notDone() {
-    return new Schedule(...this.filter(todo => !todo.done));
+    return [].concat(this).filter(todo => !todo.done);
   }
 
   update() {
-    if (this.length === 0) return this;
+    console.log('Updating schedule', this);
+    const notDone = this.notDone();
+    const lastIndex = notDone.length - 1;
+    if (lastIndex === -1) return this;
+
+    console.log('Rescheduling incomplete todos', notDone);
+
     const tomorrow = moment().add(1, 'day').startOf('day').toDate();
-    const lastIndex = this.length - 1;
     this.sort((a, b) => a.start - b.start);
-    this[0].start = new Date();
+
+    console.log('Adjusting first item start', notDone[0]);
+    notDone[0].start = new Date();
+    console.log('Adjusted first item start', notDone[0]);
+
     for (let i = 0; i <= lastIndex; i++) {
-      const current = this[i];
+      const current = notDone[i];
       if (current.end > tomorrow && current.start < tomorrow) {
         current.start = tomorrow;
       }
       if (i < lastIndex) {
-        this[i + 1].start = current.end;
+        notDone[i + 1].start = current.end;
       }
     }
+
+    console.log('Updated schedule', this);
     return this;
   }
 }
