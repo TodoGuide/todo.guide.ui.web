@@ -43,29 +43,25 @@ class Schedule extends Component {
   }
 
   calendarOnEventResize = ({ event, start, end }) => {
-    event.duration = moment.duration(moment(end).diff(moment(start))).asMinutes();
+    event.estimate = moment.duration(moment(end).diff(moment(start))).asMinutes();
     event.start = start;
-    const { schedule } = this.state;
-    this.setState({ schedule: schedule.update() });
+    this.notifyScheduleChanged();
   };
 
   calendarOnEventDrop = ({ event, start }) => {
     event.start = start;
-    const { schedule } = this.state;
-    this.setState({ schedule: schedule.update() });
+    this.notifyScheduleChanged();
   };
 
   calendarOnSelectSlot = ({ start, end }) => {
     const { currentTodo, schedule } = this.state;
     if (currentTodo) return;
-    const title = window.prompt("What's your todo item?"); // TODO: Use Modal
-    if (!title) return;
-    schedule.push(new TodoModel({
+    const todo = new TodoModel({
       start,
       estimate: moment.duration(moment(end).diff(moment(start))).asMinutes(),
-      title,
-    }));
-    this.setState({ schedule: schedule.update() });
+    });
+    schedule.push(todo);
+    this.setState({ currentTodo: todo });
   };
 
   calendarOnSelectEvent = (event) => {
@@ -73,7 +69,10 @@ class Schedule extends Component {
   }
 
   todoOnRequestClose() {
-    // todo: Save currentTodo changes
+    this.notifyScheduleChanged();
+  }
+
+  notifyScheduleChanged() {
     const { schedule } = this.state;
     this.setState({ currentTodo: null, schedule: schedule.update() });
   }

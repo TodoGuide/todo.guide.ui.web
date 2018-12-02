@@ -2,18 +2,6 @@ import Todo from '../Model/Todo';
 
 const defaultTodos = [
   {
-    title: 'Ability to mark an item as complete',
-    start: 10,
-    estimate: 120,
-    done: true,
-  },
-  {
-    title: 'Persist data offline',
-    start: 15,
-    estimate: 180,
-    done: true,
-  },
-  {
     title: 'Host on GitHub static sites',
     start: 20,
     estimate: 90,
