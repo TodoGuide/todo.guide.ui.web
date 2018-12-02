@@ -41,6 +41,7 @@ class Todo extends Component {
     }
     return (
       <div>
+        <h2>What needs to get done?</h2>
         <p>
           Title:&nbsp;
           <input
