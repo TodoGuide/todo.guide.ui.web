@@ -75,7 +75,7 @@ class Schedule extends Component {
   todoOnRequestClose() {
     // todo: Save currentTodo changes
     const { schedule } = this.state;
-    this.setState({ currentTodo: null, schedule: schedule.notDone() });
+    this.setState({ currentTodo: null, schedule: schedule.update() });
   }
 
   render() {
@@ -97,7 +97,7 @@ class Schedule extends Component {
         <Calendar
           defaultDate={new Date()}
           defaultView="day"
-          events={schedule.notDone()}
+          events={schedule.filter(todo => !todo.done)}
           onEventDrop={this.calendarOnEventDrop}
           onEventResize={this.calendarOnEventResize}
           onSelectEvent={this.calendarOnSelectEvent}
