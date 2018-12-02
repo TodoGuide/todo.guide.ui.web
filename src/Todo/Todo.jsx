@@ -17,9 +17,14 @@ class Todo extends Component {
   }
 
   doneChange({ target }) {
-    console.debug('doneChange called', target);
     const { todo } = this.state;
     todo.done = target.checked;
+    this.setState({ todo });
+  }
+
+  estimateChange({ target }) {
+    const { todo } = this.state;
+    todo.estimate = Number.parseInt(target.value, 10) || todo.estimate;
     this.setState({ todo });
   }
 
@@ -36,8 +41,14 @@ class Todo extends Component {
         </p>
         <p>
           Estimate: About&nbsp;
-          {todo.estimate}
-          &nbsp;minutes
+          <input
+            name="estimate"
+            id="estimate"
+            type="text"
+            value={todo.estimate}
+            onChange={this.estimateChange.bind(this)}
+          />
+          &nbsp;minutes remaining
         </p>
         <p>
           <label htmlFor="done">

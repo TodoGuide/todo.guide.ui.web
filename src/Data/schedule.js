@@ -11,6 +11,7 @@ const defaultTodos = [
     title: 'Persist data offline',
     start: 15,
     estimate: 180,
+    done: true,
   },
   {
     title: 'Host on GitHub static sites',
