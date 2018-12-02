@@ -11,9 +11,11 @@ import ScheduleModel from './Model/Schedule';
 
 Modal.setAppElement('#root'); // Modals!
 
+const scheduleData = new ScheduleModel(...todos);
+
 class App extends Component {
   state = {
-    schedule: new ScheduleModel(...todos),
+    schedule: scheduleData,
   };
 
   render() {
