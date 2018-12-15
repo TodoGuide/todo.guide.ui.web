@@ -18,6 +18,7 @@ export default class Schedule extends Array {
 
   update() {
     console.log('Updating schedule', this);
+    this.sort((a, b) => a.start - b.start);
     const notDone = this.notDone();
     const lastIndex = notDone.length - 1;
     if (lastIndex === -1) return this;
@@ -25,7 +26,6 @@ export default class Schedule extends Array {
     console.log('Rescheduling incomplete todos', notDone);
 
     const tomorrow = moment().add(1, 'day').startOf('day').toDate();
-    this.sort((a, b) => a.start - b.start);
 
     console.log('Adjusting first item start', notDone[0]);
     notDone[0].start = new Date();

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TodoModel from '../Model/Todo';
+import Todo from '../Models/Todo';
 
-class Todo extends Component {
+class TodoComponent extends Component {
   static defaultProps = {
     todo: null,
   };
 
   static propTypes = {
-    todo: PropTypes.instanceOf(TodoModel),
+    todo: PropTypes.instanceOf(Todo),
   };
 
   constructor(props) {
@@ -16,21 +16,13 @@ class Todo extends Component {
     this.state = { todo: props.todo };
   }
 
-  doneChange({ target }) {
-    const { todo } = this.state;
-    todo.done = target.checked;
-    this.setState({ todo });
-  }
+  // componentDidMount() {
+  //   this.title.focus();
+  // }
 
-  estimateChange({ target }) {
+  inputValueChange = ({ target }) => {
     const { todo } = this.state;
-    todo.estimate = Number.parseInt(target.value, 10) || todo.estimate;
-    this.setState({ todo });
-  }
-
-  titleChange({ target }) {
-    const { todo } = this.state;
-    todo.title = target.value;
+    todo[target.name] = target.value;
     this.setState({ todo });
   }
 
@@ -48,8 +40,10 @@ class Todo extends Component {
             name="title"
             type="text"
             value={todo.title}
-            onChange={this.titleChange.bind(this)}
+            onChange={this.inputValueChange.bind(this)}
             style={{ width: 500 }}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
           />
         </p>
         <p>
@@ -58,7 +52,7 @@ class Todo extends Component {
             name="estimate"
             type="text"
             value={todo.estimate}
-            onChange={this.estimateChange.bind(this)}
+            onChange={this.inputValueChange.bind(this)}
             style={{ width: 50, textAlign: 'center' }}
           />
           &nbsp;minutes remaining
@@ -69,7 +63,7 @@ class Todo extends Component {
               name="done"
               type="checkbox"
               checked={todo.done}
-              onChange={this.doneChange.bind(this)}
+              onChange={this.inputValueChange.bind(this)}
             />
             &nbsp;
             Done
@@ -79,4 +73,4 @@ class Todo extends Component {
   }
 }
 
-export default Todo;
+export default TodoComponent;

@@ -4,9 +4,9 @@ import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import Modal from 'react-modal';
-import Todo from '../Todo/Todo';
-import TodoModel from '../Model/Todo';
-import ScheduleModel from '../Model/Schedule';
+import TodoComponent from './TodoComponent';
+import Todo from '../Models/Todo';
+import ScheduleModel from '../Models/Schedule';
 
 // Setup
 const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
@@ -25,73 +25,76 @@ const modalStyles = {
 };
 
 /* eslint no-param-reassign: ["error", { "props": false }] */
-class Schedule extends Component {
+class ScheduleComponent extends Component {
   static propTypes = {
     increment: PropTypes.number,
     schedule: PropTypes.instanceOf(ScheduleModel).isRequired,
-    currentTodo: PropTypes.instanceOf(TodoModel),
+    onScheduleChanged: PropTypes.func,
   }
 
   static defaultProps = {
     increment: 15,
-    currentTodo: null,
+    onScheduleChanged: () => {},
   };
 
   constructor(props) {
     super(props);
-    this.state = { schedule: props.schedule, currentTodo: props.currentTodo };
+    this.state = { currentTodo: null, schedule: props.schedule };
   }
 
   calendarOnEventResize = ({ event, start, end }) => {
+    console.log('Calling calendarOnEventResize: ', event, { start, end });
     event.estimate = moment.duration(moment(end).diff(moment(start))).asMinutes();
     event.start = start;
-    this.notifyScheduleChanged();
+    this.callOnScheduleChanged();
   };
 
   calendarOnEventDrop = ({ event, start }) => {
+    console.log('Calling calendarOnEventDrop: ', event, { start });
     event.start = start;
-    this.notifyScheduleChanged();
+    console.log('Calling OnScheduleChanged event ', event);
+    this.callOnScheduleChanged();
   };
+
+  callOnScheduleChanged = () => {
+    console.log('Calling callOnScheduleChanged');
+    const { onScheduleChanged } = this.props;
+    onScheduleChanged();
+  }
 
   calendarOnSelectSlot = ({ start, end }) => {
     const { currentTodo, schedule } = this.state;
     if (currentTodo) return;
-    const todo = new TodoModel({
+    const todo = new Todo({
       start,
       estimate: moment.duration(moment(end).diff(moment(start))).asMinutes(),
     });
-    schedule.push(todo);
-    this.setState({ currentTodo: todo });
+    schedule.push(currentTodo);
+    this.setState({ currentTodo: todo, schedule });
   };
 
   calendarOnSelectEvent = (event) => {
     this.setState({ currentTodo: event });
   }
 
-  todoOnRequestClose() {
-    this.notifyScheduleChanged();
-  }
-
-  notifyScheduleChanged() {
-    const { schedule } = this.state;
-    this.setState({ currentTodo: null, schedule: schedule.update() });
+  todoOnSaveClick = () => {
+    this.callOnScheduleChanged();
+    this.setState({ currentTodo: null });
   }
 
   render() {
-    const { schedule, currentTodo } = this.state;
+    const { currentTodo, schedule } = this.state;
     const { increment } = this.props;
     console.log('Schedule.jsx render', schedule);
-    localStorage.setItem('todos', JSON.stringify(schedule)); // TODO: Use events!
     return (
       <div>
         <Modal
           isOpen={!!currentTodo}
-          onRequestClose={this.todoOnRequestClose}
           contentLabel="Example Modal"
           style={modalStyles}
         >
-          <Todo todo={currentTodo} />
-          <button type="button" onClick={this.todoOnRequestClose.bind(this)}>Close</button>
+          <TodoComponent todo={currentTodo} />
+          <button type="button" onClick={this.todoOnSaveClick}>Close</button>
         </Modal>
         <Calendar
           defaultDate={new Date()}
@@ -111,4 +114,4 @@ class Schedule extends Component {
   }
 }
 
-export default Schedule;
+export default ScheduleComponent;

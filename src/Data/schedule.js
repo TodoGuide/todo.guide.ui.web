@@ -1,4 +1,4 @@
-import Todo from '../Model/Todo';
+import Todo from '../Models/Todo';
 
 const defaultTodos = [
   {
