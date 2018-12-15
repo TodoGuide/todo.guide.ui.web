@@ -16,10 +16,6 @@ class TodoComponent extends Component {
     this.state = { todo: props.todo };
   }
 
-  // componentDidMount() {
-  //   this.title.focus();
-  // }
-
   inputValueChange = ({ target }) => {
     const { todo } = this.state;
     todo[target.name] = target.value;
@@ -40,8 +36,9 @@ class TodoComponent extends Component {
             name="title"
             type="text"
             value={todo.title}
+            placeholder="This, that, and the other..."
             onChange={this.inputValueChange.bind(this)}
-            style={{ width: 500 }}
+            style={{ width: '80%' }}
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus
           />
@@ -52,8 +49,8 @@ class TodoComponent extends Component {
             name="estimate"
             type="text"
             value={todo.estimate}
-            onChange={this.inputValueChange.bind(this)}
-            style={{ width: 50, textAlign: 'center' }}
+            onChange={this.inputValueChange}
+            style={{ width: 30, textAlign: 'center' }}
           />
           &nbsp;minutes remaining
         </p>
@@ -63,7 +60,7 @@ class TodoComponent extends Component {
               name="done"
               type="checkbox"
               checked={todo.done}
-              onChange={this.inputValueChange.bind(this)}
+              onChange={this.inputValueChange}
             />
             &nbsp;
             Done
