@@ -69,7 +69,7 @@ class ScheduleComponent extends Component {
       start,
       estimate: moment.duration(moment(end).diff(moment(start))).asMinutes(),
     });
-    schedule.push(currentTodo);
+    schedule.push(todo);
     this.setState({ currentTodo: todo, schedule });
   };
 
