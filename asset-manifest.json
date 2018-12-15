@@ -1,16 +1,16 @@
 {
   "main.css": "/todo.guide.ui.web/static/css/main.32bca115.chunk.css",
-  "main.js": "/todo.guide.ui.web/static/js/main.6fbd48cd.chunk.js",
-  "main.js.map": "/todo.guide.ui.web/static/js/main.6fbd48cd.chunk.js.map",
+  "main.js": "/todo.guide.ui.web/static/js/main.6eb91e9f.chunk.js",
+  "main.js.map": "/todo.guide.ui.web/static/js/main.6eb91e9f.chunk.js.map",
   "static/css/1.f515ce7f.chunk.css": "/todo.guide.ui.web/static/css/1.f515ce7f.chunk.css",
   "static/js/1.4585b797.chunk.js": "/todo.guide.ui.web/static/js/1.4585b797.chunk.js",
   "static/js/1.4585b797.chunk.js.map": "/todo.guide.ui.web/static/js/1.4585b797.chunk.js.map",
   "runtime~main.js": "/todo.guide.ui.web/static/js/runtime~main.5d05241a.js",
   "runtime~main.js.map": "/todo.guide.ui.web/static/js/runtime~main.5d05241a.js.map",
-  "static/css/1.f515ce7f.chunk.css.map": "/todo.guide.ui.web/static/css/1.f515ce7f.chunk.css.map",
-  "static/media/logo.svg": "/todo.guide.ui.web/static/media/logo.5d5d9eef.svg",
   "static/css/main.32bca115.chunk.css.map": "/todo.guide.ui.web/static/css/main.32bca115.chunk.css.map",
+  "static/media/logo.svg": "/todo.guide.ui.web/static/media/logo.5d5d9eef.svg",
+  "static/css/1.f515ce7f.chunk.css.map": "/todo.guide.ui.web/static/css/1.f515ce7f.chunk.css.map",
   "index.html": "/todo.guide.ui.web/index.html",
-  "precache-manifest.cbb148afe1ea22709a6063a4adf69dc5.js": "/todo.guide.ui.web/precache-manifest.cbb148afe1ea22709a6063a4adf69dc5.js",
+  "precache-manifest.9b265e8938e034fc3ee19982897ede78.js": "/todo.guide.ui.web/precache-manifest.9b265e8938e034fc3ee19982897ede78.js",
   "service-worker.js": "/todo.guide.ui.web/service-worker.js"
 }
