@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import TodoComponent from './TodoComponent';
 import Todo from '../Models/Todo';
 import ScheduleModel from '../Models/Schedule';
+import TodoScheduleItemComponent from './TodoScheduleItemComponent';
 
 // Setup
 const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
@@ -77,7 +78,11 @@ class ScheduleComponent extends Component {
     this.setState({ currentTodo: event });
   }
 
-  todoOnSaveClick = () => {
+  todoOnCloseClick = () => {
+    const { currentTodo, schedule } = this.state;
+    if (!currentTodo.title) {
+      schedule.splice(schedule.indexOf(currentTodo), 1);
+    }
     this.callOnScheduleChanged();
     this.setState({ currentTodo: null });
   }
@@ -94,12 +99,13 @@ class ScheduleComponent extends Component {
           style={modalStyles}
         >
           <TodoComponent todo={currentTodo} />
-          <button type="button" onClick={this.todoOnSaveClick}>Close</button>
+          <button type="button" onClick={this.todoOnCloseClick}>Close</button>
         </Modal>
         <Calendar
           defaultDate={new Date()}
           defaultView="day"
           events={schedule.filter(todo => !todo.done)}
+          titleAccessor={event => (<TodoScheduleItemComponent todo={event} />)}
           onEventDrop={this.calendarOnEventDrop}
           onEventResize={this.calendarOnEventResize}
           onSelectEvent={this.calendarOnSelectEvent}

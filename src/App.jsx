@@ -24,7 +24,7 @@ class App extends Component {
 
   handleScheduleChange = () => {
     const { schedule } = this.state;
-    localStorage.setItem(' todos', JSON.stringify(schedule.update()));
+    localStorage.setItem('todos', JSON.stringify(schedule.update()));
     this.setState({ schedule });
   }
 

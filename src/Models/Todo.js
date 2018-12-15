@@ -4,14 +4,10 @@ export default class Todo {
   constructor({
     title, estimate, start, done,
   }) {
-    console.debug('Constructing Todo', {
-      title, estimate, start, done,
-    });
-    this.title = title || 'New task';
+    this.title = title || '';
     this.estimate = estimate || 60;
     this.start = start || Date.now();
     this.done = done || false;
-    console.debug('Constructed Todo', this);
   }
 
   get end() {

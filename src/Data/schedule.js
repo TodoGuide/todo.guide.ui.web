@@ -20,6 +20,8 @@ const defaultTodos = [
 
 const storedTodos = JSON.parse(localStorage.getItem('todos'));
 
+console.log('storedTodos', storedTodos);
+
 const todos = (storedTodos || defaultTodos).map(todo => new Todo(todo));
 
 export default todos;
