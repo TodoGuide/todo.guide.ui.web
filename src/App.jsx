@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import * as ReactRedux from 'react-redux';
 
 import './App.css';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
@@ -8,6 +9,8 @@ import logo from './logo.svg';
 import todos from './Data/schedule';
 import Schedule from './Models/Schedule';
 import ScheduleComponent from './Components/ScheduleComponent';
+
+import store from './Data/store';
 
 Modal.setAppElement('#root'); // Modals!
 
@@ -33,10 +36,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" style={{ display: 'none' }} />
           <h1 className="App-title">Todo Guide!</h1>
         </header>
-        <ScheduleComponent
-          schedule={schedule}
-          onScheduleChanged={this.handleScheduleChange}
-        />
+        <ReactRedux.Provider store={store}>
+          <ScheduleComponent
+            schedule={schedule}
+            onScheduleChanged={this.handleScheduleChange}
+          />
+        </ReactRedux.Provider>
       </div>
     );
   }
