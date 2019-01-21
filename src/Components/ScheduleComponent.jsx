@@ -4,6 +4,7 @@ import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import Modal from 'react-modal';
+import { connect } from 'react-redux';
 import TodoComponent from './TodoComponent';
 import Todo from '../Models/Todo';
 import ScheduleModel from '../Models/Schedule';
@@ -91,6 +92,7 @@ class ScheduleComponent extends Component {
     const { currentTodo, schedule } = this.state;
     const { increment } = this.props;
     console.log('Schedule.jsx render', schedule);
+    // Calendar docs: http://intljusticemission.github.io/react-big-calendar/examples/index.html#api
     return (
       <div>
         <Modal
