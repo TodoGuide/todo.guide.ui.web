@@ -18,8 +18,7 @@ export default class Schedule extends Array {
 
   update() {
     console.log('Updating schedule', this);
-    this.sort((a, b) => a.start - b.start);
-    const notDone = this.notDone();
+    const notDone = this.notDone().sort((a, b) => a.start - b.start);
     const lastIndex = notDone.length - 1;
     if (lastIndex === -1) return this;
 
