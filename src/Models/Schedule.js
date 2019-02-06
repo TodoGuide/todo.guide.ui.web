@@ -32,7 +32,7 @@ export default class Schedule extends Array {
 
     for (let i = 0; i <= lastIndex; i++) {
       const current = notDone[i];
-      if (current.end > tomorrow && current.start < tomorrow) {
+      if (current.end >= tomorrow && current.start < tomorrow) {
         current.start = tomorrow;
       }
       if (i < lastIndex) {
