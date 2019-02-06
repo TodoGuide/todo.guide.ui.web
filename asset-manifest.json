@@ -1,7 +1,7 @@
 {
   "main.css": "/todo.guide.ui.web/static/css/main.0162b950.chunk.css",
-  "main.js": "/todo.guide.ui.web/static/js/main.c9200982.chunk.js",
-  "main.js.map": "/todo.guide.ui.web/static/js/main.c9200982.chunk.js.map",
+  "main.js": "/todo.guide.ui.web/static/js/main.632e85ff.chunk.js",
+  "main.js.map": "/todo.guide.ui.web/static/js/main.632e85ff.chunk.js.map",
   "static/css/1.53db6389.chunk.css": "/todo.guide.ui.web/static/css/1.53db6389.chunk.css",
   "static/js/1.54a44406.chunk.js": "/todo.guide.ui.web/static/js/1.54a44406.chunk.js",
   "static/js/1.54a44406.chunk.js.map": "/todo.guide.ui.web/static/js/1.54a44406.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/media/logo.svg": "/todo.guide.ui.web/static/media/logo.5d5d9eef.svg",
   "static/css/main.0162b950.chunk.css.map": "/todo.guide.ui.web/static/css/main.0162b950.chunk.css.map",
   "index.html": "/todo.guide.ui.web/index.html",
-  "precache-manifest.6a3b235dfadfbf42cd9f728433406b32.js": "/todo.guide.ui.web/precache-manifest.6a3b235dfadfbf42cd9f728433406b32.js",
+  "precache-manifest.acc35b565c73c88cd65f38181b75b2e5.js": "/todo.guide.ui.web/precache-manifest.acc35b565c73c88cd65f38181b75b2e5.js",
   "service-worker.js": "/todo.guide.ui.web/service-worker.js"
 }
