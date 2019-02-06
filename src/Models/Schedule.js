@@ -24,7 +24,7 @@ export default class Schedule extends Array {
 
     console.log('Rescheduling incomplete todos', notDone);
 
-    const tomorrow = moment().add(1, 'day').startOf('day').toDate();
+    let nextDay = moment().add(1, 'day').startOf('day').toDate();
 
     console.log('Adjusting first item start', notDone[0]);
     notDone[0].start = new Date();
@@ -32,8 +32,10 @@ export default class Schedule extends Array {
 
     for (let i = 0; i <= lastIndex; i++) {
       const current = notDone[i];
-      if (current.end >= tomorrow && current.start < tomorrow) {
-        current.start = tomorrow;
+
+      if (current.end >= nextDay && current.start < nextDay) {
+        current.start = nextDay;
+        nextDay = moment(nextDay).add(1, 'day').startOf('day').toDate();
       }
       if (i < lastIndex) {
         notDone[i + 1].start = current.end;
