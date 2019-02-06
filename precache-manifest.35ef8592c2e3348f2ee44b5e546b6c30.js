@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/todo.guide.ui.web/static/js/runtime~main.5d05241a.js"
   },
   {
-    "revision": "632e85ff7ffa58129de3",
-    "url": "/todo.guide.ui.web/static/js/main.632e85ff.chunk.js"
+    "revision": "885e58324cca80e72274",
+    "url": "/todo.guide.ui.web/static/js/main.885e5832.chunk.js"
   },
   {
     "revision": "54a444064a76ec619799",
     "url": "/todo.guide.ui.web/static/js/1.54a44406.chunk.js"
   },
   {
-    "revision": "632e85ff7ffa58129de3",
+    "revision": "885e58324cca80e72274",
     "url": "/todo.guide.ui.web/static/css/main.0162b950.chunk.css"
   },
   {
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/todo.guide.ui.web/static/css/1.53db6389.chunk.css"
   },
   {
-    "revision": "ce7abe7cd305e02d2ec75e0cc73cd726",
+    "revision": "729b4ab0cdba0cec0459a107500dc0f7",
     "url": "/todo.guide.ui.web/index.html"
   }
 ];
